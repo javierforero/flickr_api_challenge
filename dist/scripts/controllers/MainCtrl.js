@@ -59,12 +59,11 @@
     }
     };
 
-    $scope.createUrl = function(farmId, serverId, id, secret, size) {
+    $scope.createUrl = function(farmId, serverId, id, secret) {
 
       var url = "https://farm"+ farmId +
         ".staticflickr.com/"+ serverId +
-        "/"+id+"_"+secret+"_"+size+".jpg";
-
+        "/"+id+"_"+secret+".jpg";
         return url;
     };
 

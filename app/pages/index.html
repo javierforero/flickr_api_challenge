@@ -21,10 +21,8 @@
     </form>
 
     <h1 ng-show="!pictures && searchError">{{searchError}}</h1>
-    <section class="thumbnails-container clearfix" ng-show="pictures">
-      <div class="thumbnails column fourth" ng-repeat="picture in pictures">
-        <img ng-click="openImage(createUrl(picture.farm, picture.server, picture.id,picture.secret,'c'))" src="{{createUrl(picture.farm, picture.server, picture.id,picture.secret,'s')}}">
-      </div>
+    <section class="thumbnails-container clearfix" id="photos" ng-show="pictures">
+        <img ng-click="openImage(createUrl(picture.farm, picture.server, picture.id,picture.secret))" src="{{createUrl(picture.farm, picture.server, picture.id,picture.secret)}}" ng-repeat="picture in pictures">
     </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
