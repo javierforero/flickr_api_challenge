@@ -1,0 +1,22 @@
+@import "https://fonts.googleapis.com/css?family=Montserrat:400,700";
+@import "https://fonts.googleapis.com/css?family=Libre+Baskerville";
+
+html {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 40px;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+input.search-bar {
+  width: 90%;
+  height: 90px;
+  padding: 10px;
+  outline: none;
+}

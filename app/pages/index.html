@@ -1,26 +1,31 @@
 <!DOCTYPE html>
 <html ng-app="flickrChallenge">
   <head>
-    <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+    <!-- <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
     <!-- Use any additional Javascript or CSS libraries you like -->
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="/styles/style.css" rel="stylesheet">
     <!-- <script>//TODO On page load, below script is executed.  Instead, send the request when user clicks button#flickr_search
       check scripts/flick.js
     </script> -->
   </head>
   <body ng-controller="MainCtrl">
     <div>
-      <input id="flickr_query" type="text" ng-model="text" /><!-- TODO I would rather have this user input be the 'text' that we send with the flickr request -->
-      <button id="flickr_search" ng-click="getPhotos()">Search</button><!-- TODO This button doesn't do anything.  I want it to initiate the flickr ajax search request -->
+      <input class="search-bar" ng-show="searchBarError" id="flickr_query" type="text" ng-model="text" autofocus="off" placeholder="{{searchBarError}}" />
+      <input class="search-bar" ng-show="!searchBarError" id="flickr_query" type="text" ng-model="text" autofocus="false" placeholder="What do you wanna see?" /><!-- TODO I would rather have this user input be the 'text' that we send with the flickr request -->
+      <button class="btn btn-default" id="flickr_search" ng-click="getPhotos()">Search</button><!-- TODO This button doesn't do anything.  I want it to initiate the flickr ajax search request -->
     </div>
-    <section class="thumbnails-container" ng-show="pictures">
-      <div class="thumbnails" ng-repeat="picture in pictures">
-        <img src="https://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_s.jpg"/>
+    <h1 ng-show="!pictures && searchError">{{searchError}}</h1>
+    <section class="thumbnails-container row" ng-show="pictures">
+      <div class="thumbnails col-md-2" ng-repeat="picture in pictures">
+        <img ng-click="openImage(createUrl(picture.farm, picture.server, picture.id,picture.secret,'c'))" src="{{createUrl(picture.farm, picture.server, picture.id,picture.secret,'m')}}">
       </div>
     </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
-  <script src="/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
+  <script src="/scripts/ui-bootstrap-tpls-2.1.3.min.js"></script>
   <script src="/scripts/app.js"></script>
+  <script src="/scripts/controllers/MainCtrl.js"></script>
+  <script src="/scripts/controllers/PictureModalCtrl.js"></script>
   </body>
 </html>
