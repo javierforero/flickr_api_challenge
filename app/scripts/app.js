@@ -1,11 +1,9 @@
 (function () {
-  angular.module('flickrChallenge', []);
+  angular.module('flickrChallenge', ['ui.bootstrap']);
 
   // Main controller where my scripts will be
   function MainCtrl ($scope, $http) {
 
-
-    $scope.pictures = {};
 
     var searchText = "Milky+Way+Galaxy";
 
@@ -22,7 +20,7 @@
     // Flickr API documentation for flickr.photos.search request https://www.flickr.com/services/api/flickr.photos.search.html
 
     $scope.getPhotos = function() {
-      console.log("here");
+
       $http({
         url: url,
         type: 'GET',
@@ -34,16 +32,16 @@
           //TODO I prefer when we show the original photo, we don't have to navigate away from the page and force the user to click the back button when done (hint: Ajax, Modal)
           //EXTRA_CREDIT Make this look good!
       }).then(function(response) {
-        console.log(response.data.photos.photo[0]);
-        setPictures(response.data.photos.photo[0]);
+        console.log(response.data.photos.photo);
+        setPictures(response.data.photos.photo);
       }, function(error) {
         console.log(error);
       });
 
     };
 
-    var setPictures = function(obj) {
-      $scope.pictures = obj;
+    var setPictures = function(arrayPics) {
+      $scope.pictures = arrayPics;
     };
 
   }

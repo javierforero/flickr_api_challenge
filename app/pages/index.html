@@ -15,15 +15,12 @@
     </div>
     <section class="thumbnails-container" ng-show="pictures">
       <div class="thumbnails" ng-repeat="picture in pictures">
-        <ul>
-          <li>
-            <img src="https://farm{{pictures.farm}}.staticflickr.com/{{pictures.server}}/{{pictures.id}}_{{pictures.secret}}.jpg"/>
-          </li>
-        </ul>
+        <img src="https://farm{{picture.farm}}.staticflickr.com/{{picture.server}}/{{picture.id}}_{{picture.secret}}_s.jpg"/>
       </div>
     </section>
 
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="/scripts/ui-bootstrap-tpls-2.5.0.min.js"></script>
   <script src="/scripts/app.js"></script>
   </body>
 </html>
