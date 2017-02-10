@@ -25,6 +25,7 @@
           "&content_type=1" +
           "&safe_search=1" +
           "&format=json" +
+          "&privacy_filter=1"+
           "&nojsoncallback=1" +
           "&api_key=" + API_KEY;
 
@@ -68,7 +69,7 @@
     };
 
     $scope.openImage = function(currentImage) {
-      
+
       $uibModal.open({
        templateUrl: '/templates/imageModal.html',
        resolve: {

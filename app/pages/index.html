@@ -4,21 +4,26 @@
     <!-- <script src="http://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script> -->
     <!-- Use any additional Javascript or CSS libraries you like -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link href="/styles/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css" >
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- <script>//TODO On page load, below script is executed.  Instead, send the request when user clicks button#flickr_search
       check scripts/flick.js
     </script> -->
   </head>
   <body ng-controller="MainCtrl">
-    <div>
+    <form ng-submit="getPhotos()">
       <input class="search-bar" ng-show="searchBarError" id="flickr_query" type="text" ng-model="text" autofocus="off" placeholder="{{searchBarError}}" />
       <input class="search-bar" ng-show="!searchBarError" id="flickr_query" type="text" ng-model="text" autofocus="false" placeholder="What do you wanna see?" /><!-- TODO I would rather have this user input be the 'text' that we send with the flickr request -->
-      <button class="btn btn-default" id="flickr_search" ng-click="getPhotos()">Search</button><!-- TODO This button doesn't do anything.  I want it to initiate the flickr ajax search request -->
-    </div>
+      <button class="search-button" id="flickr_search" type="submit">
+        Search
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button><!-- TODO This button doesn't do anything.  I want it to initiate the flickr ajax search request -->
+    </form>
+
     <h1 ng-show="!pictures && searchError">{{searchError}}</h1>
-    <section class="thumbnails-container row" ng-show="pictures">
-      <div class="thumbnails col-md-2" ng-repeat="picture in pictures">
-        <img ng-click="openImage(createUrl(picture.farm, picture.server, picture.id,picture.secret,'c'))" src="{{createUrl(picture.farm, picture.server, picture.id,picture.secret,'m')}}">
+    <section class="thumbnails-container clearfix" ng-show="pictures">
+      <div class="thumbnails column fourth" ng-repeat="picture in pictures">
+        <img ng-click="openImage(createUrl(picture.farm, picture.server, picture.id,picture.secret,'c'))" src="{{createUrl(picture.farm, picture.server, picture.id,picture.secret,'s')}}">
       </div>
     </section>
 

@@ -2,7 +2,9 @@
 @import "https://fonts.googleapis.com/css?family=Libre+Baskerville";
 
 html {
-  box-sizing: border-box;
+
+  height: 100%;
+  font-size: 100%;
 }
 
 body {
@@ -10,13 +12,58 @@ body {
   font-size: 40px;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*, *::before, *::after {
+    -moz-box-sizing: boder-box;
+    -webkit-box-sizing: boder-box;
+    box-sizing: border-box;
 }
 
+.clearfix::before,
+.clearfix::after {
+    content: " ";
+    display: table;
+}
+
+.clearfix::after {
+    clear: both;
+}
+
+.column {
+      float: left;
+  }
+
+  .column.full { width: 100%;}
+  .column.two-thirds { width: 66.7%;}
+  .column.half { width: 50%;}
+  .column.third { width: 33.3%;}
+  .column.fourth { width: 6%;}
+  .column.flow-opposite { float: right;}
+
 input.search-bar {
-  width: 90%;
+  width: 85%;
   height: 90px;
   padding: 10px;
   outline: none;
+}
+
+section.thumbnails-container {
+  position: relative;
+  margin: 0 auto;
+  max-width: 70rem;
+  margin-top: 50px;
+}
+
+div.thumnails {
+  position: relative;
+}
+
+button.search-button {
+  width: 15%;
+  float: right;
+  height: 90px;
+  font-size: .6em;
+  border: none;
+  color: white;
+  background-color: #FF6759;
+  font-size: .5em;
 }
