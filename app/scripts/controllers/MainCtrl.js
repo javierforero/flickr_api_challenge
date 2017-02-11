@@ -15,6 +15,7 @@
     // Flickr API documentation for flickr.photos.search request https://www.flickr.com/services/api/flickr.photos.search.html
 
     $scope.getPhotos = function() {
+
       if($scope.text) {
 
         var searchText = $scope.text.split(' ').join('+');
@@ -25,14 +26,15 @@
           "&content_type=1" +
           "&safe_search=1" +
           "&format=json" +
-          "&privacy_filter=1"+
           "&nojsoncallback=1" +
           "&api_key=" + API_KEY;
 
+
+    // Here's the api get request. I left your comments on there so you could see the requirements
         $http({
           url: url,
           type: 'GET',
-          dataType: 'json'
+          dataType: 'jsonp'
             //TODO Parse this data to get the info we need for displaying the photos
             //TODO I would like to see a grid of the photos as small thumbnails since we want the page to load as quickly as possible
             //TODO When the user clicks on a thumbnail, we should load the original photo for the user to see
@@ -55,10 +57,15 @@
           $scope.searchError = "oops something went wrong";
         });
     } else {
+
       $scope.searchBarError = "Oops you forgot to type something in";
     }
     };
 
+/*
+function creates the image url
+parameters farmId, serverId, secret
+*/
     $scope.createUrl = function(farmId, serverId, id, secret) {
 
       var url = "https://farm"+ farmId +
@@ -67,6 +74,7 @@
         return url;
     };
 
+// Function opens modal window and creates controller. It takes the current image url
     $scope.openImage = function(currentImage) {
 
       $uibModal.open({

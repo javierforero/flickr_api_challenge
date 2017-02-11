@@ -1,8 +1,8 @@
-@import "https://fonts.googleapis.com/css?family=Montserrat:400,700";
-@import "https://fonts.googleapis.com/css?family=Libre+Baskerville";
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700");
+@import url("https://fonts.googleapis.com/css?family=Libre+Baskerville");
+@import url("media-queries.css");
 
 html {
-
   height: 100%;
   font-size: 100%;
 }
@@ -13,31 +13,20 @@ body {
 }
 
 *, *::before, *::after {
-    -moz-box-sizing: boder-box;
-    -webkit-box-sizing: boder-box;
-    box-sizing: border-box;
+  -moz-box-sizing: boder-box;
+  -webkit-box-sizing: boder-box;
+  box-sizing: border-box;
 }
 
 .clearfix::before,
 .clearfix::after {
-    content: " ";
-    display: table;
+  content: " ";
+  display: table;
 }
 
 .clearfix::after {
-    clear: both;
+  clear: both;
 }
-
-.column {
-      float: left;
-  }
-
-  .column.full { width: 100%;}
-  .column.two-thirds { width: 66.7%;}
-  .column.half { width: 50%;}
-  .column.third { width: 33.3%;}
-  .column.fourth { width: 6%;}
-  .column.flow-opposite { float: right;}
 
 input.search-bar {
   width: 85%;
@@ -59,9 +48,7 @@ section.thumbnails-container img {
 }
 
 #photos {
-  /* Prevent vertical gaps */
   line-height: 0;
-
   -webkit-column-count: 10;
   -webkit-column-gap:   0px;
   -moz-column-count:    10;
@@ -83,7 +70,7 @@ button.search-button {
 }
 
 button.search-button:hover {
-  background-color: blue;
+  background-color: black;
 }
 
 img.modal-image {
@@ -94,4 +81,28 @@ img.modal-image {
 div.modal-dialog {
   width: 36%;
   height: auto;
+}
+
+.modal {
+  text-align: center;
+  padding: 0!important;
+}
+
+.modal:before {
+  content: '';
+  display: inline-block;
+  height: 100%;
+  vertical-align: middle;
+  margin-right: -4px;
+}
+
+.modal-dialog {
+  display: inline-block;
+  text-align: left;
+  vertical-align: middle;
+}
+
+h1.search-error {
+  text-align: center;
+  margin-top: 100px;
 }
